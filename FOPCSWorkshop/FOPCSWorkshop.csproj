@@ -7,8 +7,8 @@
     <ProjectGuid>{EEDF4F56-070B-4934-8BA4-AF5FC2F94AA6}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FOPCSWorkshopC</RootNamespace>
-    <AssemblyName>FOPCSWorkshopC</AssemblyName>
+    <RootNamespace>FOPCSWorkshop</RootNamespace>
+    <AssemblyName>FOPCSWorkshop</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,8 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="WorkshopC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorkshopE.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
