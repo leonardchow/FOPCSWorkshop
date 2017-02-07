@@ -12,22 +12,106 @@ namespace FOPCSWorkshop
         {
             do
             {
-                question3();
-            } while (false);
+                question4();
+            } while (true);
 
             return;
         }
 
+        static void question4()
+        {
+            string s = "This is the sentence that will be replaced.";
+            string input = "", output = "";
+            char[] chars = new char[3];
+
+            Console.WriteLine("Substitute char example");
+            Console.WriteLine(s);
+
+            Console.Write("Please enter 2 characters with a space: ");
+            input = Console.ReadLine();
+
+            chars = input.ToCharArray();
+
+            output = Substitute(s, chars[0], chars[2]);
+
+            Console.WriteLine("{0}, {1}", chars[0], chars[2]);
+            Console.WriteLine(output);
+            Console.WriteLine();
+
+            return;
+        }
+
+        static string Substitute(string s, char c1, char c2)
+        {
+            char[] sc = s.ToCharArray();
+
+            for (int i = 0; i < s.Length; i++) // Iterate through string s
+            {
+
+                if (sc[i] == c1)
+                {
+                    sc[i] = c2;
+                }
+            }
+
+            return new string(sc);
+        }
+
         static void question3()
         {
+            string input = "";
+            int number = 0;
+            string hexResult = "EMPTY";
             Console.WriteLine("Hexadecimal conversion");
             Console.WriteLine("Hex chart:");
             for (int i = 1; i <= 100; i++)
             {
                 string hex = i.ToString("X");
-                Console.Write("{0}\t", hex);
+                Console.Write("{0}:{1}\t", i, hex);
             }
             Console.WriteLine();
+
+            while (number >= 0)
+            {
+                Console.Write("Please input an integer: ");
+                input = Console.ReadLine();
+                int.TryParse(input, out number);
+
+                hexResult = toHex(number);
+                Console.WriteLine(hexResult);
+                Console.WriteLine();
+            }
+            Console.WriteLine("Exiting...");
+        }
+
+        static string toHex(int number)
+        {
+            string hexOnes = "";
+            int hexTens = 0;
+            
+            if (number >= 16)
+            {
+                hexTens = number / 16;
+                number -= hexTens * 16;
+            }
+
+            if (number <= 9)
+            {
+                hexOnes = number.ToString();
+            } else
+            {
+                number -= 10;
+                char ones = (char)('A' + number);
+                hexOnes = ones.ToString();
+            }
+
+            if (hexTens > 0)
+            {
+                return hexTens + hexOnes;
+            } else
+            {
+                return hexOnes;
+            }
         }
         
         static void question2()
