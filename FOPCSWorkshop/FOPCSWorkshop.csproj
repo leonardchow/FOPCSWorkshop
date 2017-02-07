@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>FOP.ScratchCode</StartupObject>
+    <StartupObject>FOPCSWorkshop.WorkshopH</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -55,6 +55,7 @@
     <Compile Include="WorkshopE.cs" />
     <Compile Include="WorkshopF.cs" />
     <Compile Include="WorkshopG.cs" />
+    <Compile Include="WorkshopH.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
