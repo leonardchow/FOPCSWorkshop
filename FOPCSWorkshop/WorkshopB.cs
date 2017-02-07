@@ -61,6 +61,7 @@ namespace FOPCSWorkshop
             double FIXED_CHARGE = 2.40;
             double RATE = 0.4;
             double kms, result;
+            double roundedFare;
 
             Console.Write("Please enter distance in km: ");
             if (!(Double.TryParse(Console.ReadLine(), out kms)))
@@ -70,7 +71,8 @@ namespace FOPCSWorkshop
             }
 
             result = FIXED_CHARGE + (kms * RATE);
-            Console.WriteLine("{0:0.0}0\n", result);
+            roundedFare = Math.Round(result, 1);
+            Console.WriteLine("{0:0.00}\n", roundedFare);
 
             return true;
         }

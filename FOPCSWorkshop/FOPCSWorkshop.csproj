@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>FOP.ScratchCode</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -44,7 +47,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScratchCode.cs" />
+    <Compile Include="WorkshopA.cs" />
+    <Compile Include="WorkshopB.cs" />
+    <Compile Include="WorkshopC.cs" />
+    <Compile Include="WorkshopD.cs" />
     <Compile Include="WorkshopE.cs" />
+    <Compile Include="WorkshopF.cs" />
+    <Compile Include="WorkshopG.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
