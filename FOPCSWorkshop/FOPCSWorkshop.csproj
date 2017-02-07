@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>FOPCSWorkshop.WorkshopH</StartupObject>
+    <StartupObject>FOPCSWorkshop.WorkshopMoreExamples</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -56,6 +56,7 @@
     <Compile Include="WorkshopF.cs" />
     <Compile Include="WorkshopG.cs" />
     <Compile Include="WorkshopH.cs" />
+    <Compile Include="WorkshopMoreExamples.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
