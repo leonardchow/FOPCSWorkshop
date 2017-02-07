@@ -54,7 +54,7 @@ namespace FOPCSWorkshop
             int attempts = 0;
             int guess = -1;
             Random random = new Random();
-            int randNum = random.Next(0, 9);
+            int randNum = random.Next(0, 10);
             Console.WriteLine("Thinking of a new number...");
 
             while (guess != randNum)
