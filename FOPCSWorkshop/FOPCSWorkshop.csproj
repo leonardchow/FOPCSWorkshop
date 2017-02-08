@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>FOPCSWorkshop.WorkshopMoreExamples</StartupObject>
+    <StartupObject>FOPCSWorkshop.BusinessCases</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -46,7 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessCases.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Quizzes.cs" />
     <Compile Include="ScratchCode.cs" />
     <Compile Include="WorkshopA.cs" />
     <Compile Include="WorkshopB.cs" />
