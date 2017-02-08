@@ -130,10 +130,18 @@ namespace FOPCSWorkshop
             return;
         }
 
-        static int FindWord(string s1, string s2)
+        /// <summary>
+        /// <para>Finds string <b>s2</b> in <b>s1</b>.</para>
+        /// <para>Returns index within <b>s1</b> or <i>-1</i> if not found.</para>
+        /// </summary>
+        /// <param name="s1">String to search</param>
+        /// <param name="s2">Word to find</param>
+        /// <returns>int index of word. -1 if not found.</returns>
+        public static int FindWord(string s1, string s2)
         {
-            //int result = -1;
 
+            //int result = -1;
+            
             if (s2.Length > s1.Length || s1.Length == 0 || s2.Length == 0) return -1; // no string or s2 longer
             if (s1.Length == s2.Length) // Strings are same length
             {
