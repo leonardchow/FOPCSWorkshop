@@ -12,8 +12,66 @@ namespace FOPCSWorkshop
         {
             do
             {
-                Coins();
+                arraysHistogram();
             } while (true);
+        }
+
+        static void arraysHistogram()
+        {
+            int[] intArr = new int[10];
+            Random random = new Random();
+            int rNum = 0;
+
+            for (int i = 0; i < 50; i++)
+            {
+                rNum = random.Next(0, 10); // 0..9
+                intArr[rNum]++;
+            }
+
+            Console.WriteLine("Number");
+
+            for (int j = 0; j < 10; j++)
+            {
+                Console.Write("  {0}\t", j);
+
+                for (int k = 0; k < intArr[j]; k++) // Print stars
+                {
+                    Console.Write("*");
+                }
+                Console.WriteLine();
+            }
+
+            Console.Write("Press enter to repeat...");
+            Console.ReadLine();
+            Console.WriteLine();
+
+            return;
+        }
+
+        static void arraysNumbers()
+        {
+            int[] intArr = new int[10];
+            Random random = new Random();
+            int rNum = 0;
+
+            for (int i = 0; i < 50; i++)
+            {
+                rNum = random.Next(0, 10); // 0..9
+                intArr[rNum]++;
+            }
+
+            Console.WriteLine("Number\tCount");
+
+            for (int j = 0; j < 10; j++)
+            {
+                Console.WriteLine("  {0}\t  {1}", j, intArr[j]);
+            }
+
+            Console.Write("Press enter to repeat...");
+            Console.ReadLine();
+            Console.WriteLine();
+
+            return;
         }
 
         static void Coins()
@@ -31,8 +89,6 @@ namespace FOPCSWorkshop
             input = Console.ReadLine();
             int.TryParse(input.Split('.')[0], out dollars);
             int.TryParse(input.Split('.')[1], out cents);
-            //dollars = int.Parse(input.Split('.')[0]);
-            //cents = int.Parse(input.Split('.')[1]);
 
             if (cents != 0)
             {
