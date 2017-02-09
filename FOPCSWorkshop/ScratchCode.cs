@@ -8,8 +8,9 @@ namespace FOP
     {
         static void Main(string[] args)
         {
-            char a = '-';
-            Console.WriteLine(char.IsLetterOrDigit(a));
+            int[] a = { 1, 1, 1 };
+            a[2] = 10;
+            Console.WriteLine(a[2]);
         }
 
         static void ListThings()
