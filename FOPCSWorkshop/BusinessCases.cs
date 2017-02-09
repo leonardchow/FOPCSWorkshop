@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace FOPCSWorkshop
@@ -14,7 +15,7 @@ namespace FOPCSWorkshop
             bool keepRunning;
             do
             {
-                keepRunning = BusCase3();
+                keepRunning = BusCase2();
 
             } while (keepRunning);
 
@@ -90,7 +91,7 @@ namespace FOPCSWorkshop
             return true;
         }
 
-        public static void BusCase2()
+        public static bool BusCase2()
         {
             // Old code: 18 52
             // New code:    52 0 839
@@ -98,7 +99,9 @@ namespace FOPCSWorkshop
             {
                 "Hougang avenue 5 block 320 Singapore 2022   ",
                 "Bukit Batok AVE 3 BLK 121 Singapore 4442  ",
-                "bLK 123H Jalan Membina singapore 1212"
+                "blk123H Jalan Membina singapore 1212",
+                "Crescent Bugis Black block 552A singapore 3232",
+                "Singapore 1111 Toa Payoh Blck 312c",
             };
             string input = "";
             int choice = 0;
@@ -120,7 +123,7 @@ namespace FOPCSWorkshop
             if (!(int.TryParse(input, out choice)))
             {
                 Console.WriteLine("\nNO CHOICE MADE!\n");
-                return;
+                return true;
             }
 
             choice -= 1; // Convert to zero-based scale
@@ -128,11 +131,42 @@ namespace FOPCSWorkshop
             if (choice > sArr.Length - 1 || choice < 0)
             {
                 Console.WriteLine("\nINVALID CHOICE MADE!\n");
-                return;
+                return true;
             }
 
-            Console.WriteLine("New Code: {0}", postalCodeRefactor(sArr[choice]));
+            //Console.WriteLine("New Code: {0}", postalCodeRefactor(sArr[choice]));
+            Console.WriteLine("New Code: {0}", postalCodeRefactorRegExp(sArr[choice]));
+
             Console.WriteLine();
+
+            return true;
+        }
+
+        public static string postalCodeRefactorRegExp(string s)
+        {
+            string newPostalCode = "";
+            int blockLetterCode = 0;
+
+            Regex regexCode = new Regex(@"\d{4}");
+            string oldCode = regexCode.Match(s).ToString();
+
+            newPostalCode += oldCode[2].ToString() + oldCode[3];
+
+            Regex regexBlock = new Regex(@"(?<=[bB][lL][oO]?[cC]?[kK][ ]*)\d{3}[a-zA-Z]*"); // Matches 3 digits and optional letter AFTER word "blk" or "block" or "blck"
+            //Regex regexBlock = new Regex(@"\d{3}[^0-9 ]+");
+            string blockNum = regexBlock.Match(s).ToString();
+
+            if (blockNum.Length == 4)
+            {
+                char blockLetter = char.ToUpper(blockNum[3]);
+                blockLetterCode = blockLetter - 'A' + 1; // e.g. 'B' - 'A' + 1 = 2. // E.g. 'A' - 'A' + 1 = 1;
+
+                blockNum = blockNum.Substring(0, 3);
+            }
+
+            newPostalCode += blockLetterCode + blockNum;
+
+            return newPostalCode;
         }
 
         public static string postalCodeRefactor(string s)
