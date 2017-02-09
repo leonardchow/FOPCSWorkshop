@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>FOPCSWorkshop.Quizzes</StartupObject>
+    <StartupObject>FOPCSWorkshop.BusinessCases</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
