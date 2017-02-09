@@ -14,9 +14,21 @@ namespace FOPCSWorkshop
             {
                 //question5();
             }
-            question6();
+            question6a();
             //question5();
             //question2();
+        }
+
+        static void question6a()
+        {
+            for (int j = 1; j <= 1000; j++)
+            {
+                if (perfectNumRecur(j, 1, 0)) Console.Write("{0}\t", j);
+            }
+
+            Console.WriteLine("\nDone.");
+
+            return;
         }
 
         static void question6()
@@ -78,6 +90,46 @@ namespace FOPCSWorkshop
             Console.WriteLine("\nDone.");
 
             return;
+        }
+
+        static void question4a()
+        {
+            string input;
+            bool isPerfect = false;
+            int number;
+
+            Console.Write("Please enter a number: ");
+            input = Console.ReadLine();
+            Int32.TryParse(input, out number);
+
+            Console.WriteLine(number);
+            isPerfect = perfectNumRecur(number, 1, 0);
+
+            Console.WriteLine(isPerfect ? "Perfect" : "Not Perfect");
+            return;
+        }
+
+        /// <summary>
+        /// Checks if a number is a perfect number
+        /// <para>Returns true if <b>a</b> is a perfect number</para>
+        /// </summary>
+        /// <param name="a">Number to check</param>
+        /// <param name="b">Number to start checking against. Usually, you should set it to 1</param>
+        /// <param name="sum">Sum to start with. Usually, you should set it to 0</param>
+        /// <returns>True if number is a perfect number, false otherwise</returns>
+        /// 
+        public static bool perfectNumRecur(int a, int b, int sum)   // where int a is the number to check, and int b is the current factor
+        {                                                           // if a factor is found, return false;
+            if (b == a) // Reached end of wind [ENDING CONDITION]
+            {
+                if (sum == a) return true; // Is a perfect number
+                else return false;
+            } else // Keep going
+            {
+                if (a % b == 0) sum += b; // [CODE TO PERFORM]
+
+                return perfectNumRecur(a, b + 1, sum); // [ITERATION (b+1) & RECURSION]
+            }
         }
 
         static void question4()
