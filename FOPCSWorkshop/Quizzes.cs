@@ -27,11 +27,23 @@ namespace FOPCSWorkshop
 
         static int AskForIncome()
         {
-            string input = "";
+            bool inputWasOK = false;
             int annualIncome = 0;
-            Console.Write("Please enter your annual taxable income: ");
-            input = Console.ReadLine();
-            annualIncome = int.Parse(input);
+
+            do
+            {
+                string input = "";
+                Console.Write("Please enter your annual taxable income: ");
+                input = Console.ReadLine();
+                if (int.TryParse(input, out annualIncome))
+                {
+                    inputWasOK = true;
+                } else
+                {
+                    Console.WriteLine("That was not a recognised taxable income. Please try again.\n");
+                }
+            } while (!inputWasOK);
+            
             return annualIncome;
         }
 
@@ -66,7 +78,7 @@ namespace FOPCSWorkshop
 
         static void PrintResult(int annualIncome, double taxPayable)
         {
-            Console.WriteLine("For taxable annual income of {0:c}, the tax payable amount is {1:c}", annualIncome, taxPayable);
+            Console.WriteLine("For taxable annual income of {0:c}, the tax payable amount is {1:c}\n", annualIncome, taxPayable);
             return;
         }
 
