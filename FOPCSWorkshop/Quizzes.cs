@@ -6,8 +6,67 @@ namespace FOPCSWorkshop
     {
         public static void Main(string[] args)
         {
-            QuizDay5();
+            while (true) {
+                QuizDay6();
+            }
 
+            return;
+        }
+
+        static int[] minIncomeArray = new int[] { 20000, 30000, 40000, 80000, 120000, 160000, 200000, 320000 };
+        static double[] taxRateArray = new double[] { 0.02, 0.035, 0.07, 0.115, 0.15, 0.17, 0.18, 0.20 };
+        static int[] basePayableAmountArray = new int[] { 0, 200, 550, 3350, 7950, 13950, 20750, 42350 };
+
+        public static void QuizDay6()
+        {
+            int annualIncome = AskForIncome();
+            int taxBracket = GetTaxBracket(annualIncome);
+            double taxPayable = CalculateIncomeTax(annualIncome, taxBracket);
+            PrintResult(annualIncome, taxPayable);
+        }
+
+        static int AskForIncome()
+        {
+            string input = "";
+            int annualIncome = 0;
+            Console.Write("Please enter your annual taxable income: ");
+            input = Console.ReadLine();
+            annualIncome = int.Parse(input);
+            return annualIncome;
+        }
+
+        static int GetTaxBracket(int annualIncome)
+        {
+            int minIncomeArrayIndex = -1;
+            for (int i = minIncomeArray.Length - 1; i >= 0; i--)
+            {
+                if (minIncomeArray[i] < annualIncome)
+                {
+                    minIncomeArrayIndex = i;
+                    break;
+                }
+            }
+            return minIncomeArrayIndex;
+        }
+
+        static double CalculateIncomeTax(int annualIncome, int taxBracketIndex)
+        {
+            double taxPayable = 0.0;
+            if (taxBracketIndex == -1)
+            {
+                return taxPayable;
+            }
+            int minIncome = minIncomeArray[taxBracketIndex];
+            double taxRate = taxRateArray[taxBracketIndex];
+            int basePayableAmount = basePayableAmountArray[taxBracketIndex];
+
+            taxPayable = (annualIncome - minIncome) * taxRate + basePayableAmount;
+            return taxPayable;
+        }
+
+        static void PrintResult(int annualIncome, double taxPayable)
+        {
+            Console.WriteLine("For taxable annual income of {0:c}, the tax payable amount is {1:c}", annualIncome, taxPayable);
             return;
         }
 
